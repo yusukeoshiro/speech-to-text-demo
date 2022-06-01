@@ -1,0 +1,20 @@
+{
+  "name": "typescript-project-starting-point",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "artifactregistry-login": "npx google-artifactregistry-auth",    
+    "test": "mocha --recursive=true --require=ts-node/register --require=dotenv/config --timeout 10000 --extension=ts --exit",
+    "start": "node dist/index.js",
+    "dev:watch": "env tsc-watch --onSuccess 'node --require=dotenv/config dist/index.js'",
+    "lint": "eslint src/**/*.ts src/*.ts test/**/*.ts test/*.ts",
+    "clean": "rimraf dist/*",
+    "tsc": "tsc",
+    "build": "npm-run-all clean tsc",
+    "coverage": "nyc --reporter=lcov --reporter=text-summary --reporter=json npm run test",
+    "coverage:report": "nyc --reporter=lcov --reporter=text-summary --reporter=json npm run test && codecov"
+  },
+  "author": "",
+  "license": "ISC"
+}
